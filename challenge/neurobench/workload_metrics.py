@@ -2,7 +2,7 @@ import torch
 from neurobench.utils import check_shape, single_layer_MACs
 from neurobench.benchmarks.hooks import ActivationHook, LayerHook
 from collections import defaultdict
-from stork.nodes import LIFGroup
+from challenge.custom.lif import CustomLIFGroup
 
 
 class AccumulatedMetric:
@@ -105,7 +105,7 @@ def activation_sparsity(model, preds, data):
     #       Standard FF ANN depends on activation function, ReLU can introduce sparsity.
     total_spike_num, total_neuro_num = 0, 0
     for hook in model.activation_hooks:
-        if isinstance(hook.layer, LIFGroup):
+        if isinstance(hook.layer, CustomLIFGroup):
             spikes = hook.layer.get_flattened_out_sequence()
             spike_num, neuro_num = torch.count_nonzero(spikes).item(), torch.numel(
                 spikes
