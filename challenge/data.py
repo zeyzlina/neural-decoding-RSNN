@@ -267,10 +267,10 @@ class DatasetLoader:
             )
         else:
             train_data, train_labels = self.extend_spikes(
-                spikes_train, labels_train, self.n_time_steps, chunks=99
+                spikes_train, labels_train, chunks=99 # not extending when chunks is smaller than chunksize, which is set as 100 by default
             )
             val_data, val_labels = self.extend_spikes(
-                spikes_val, labels_val, self.n_time_steps, chunks=99
+                spikes_train, labels_train, chunks=99 # not extending when chunks is smaller than chunksize, which is set as 100 by default
             )
 
         test_data = [spikes_test]
