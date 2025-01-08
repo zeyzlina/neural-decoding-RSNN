@@ -60,7 +60,7 @@ def train_all(cfg: DictConfig) -> None:
 
     # # # # # # # # #
 
-    for monkey_name in ["loco", "indy"]:
+    for monkey_name in cfg.train_monkeys:
 
         nb_inputs = cfg.data.nb_inputs[monkey_name]
 
