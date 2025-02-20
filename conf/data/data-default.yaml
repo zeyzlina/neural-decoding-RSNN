@@ -1,6 +1,6 @@
 defaults:
   - filenames: filenames
-  - pretrain_filenames: all-data
+  - pretrain_filenames: challenge-data
 
 data_dir: "ENTER PATH TO DATA DIRECTORY HERE"
 
